@@ -33,6 +33,10 @@ let UsersService = class UsersService {
         const users = await this.userRepository.findAll({ include: { all: true } });
         return users;
     }
+    async getUserName(username) {
+        const user = await this.userRepository.findOne({ where: { username }, include: { all: true } });
+        return user;
+    }
 };
 exports.UsersService = UsersService;
 exports.UsersService = UsersService = __decorate([
