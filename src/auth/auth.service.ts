@@ -32,10 +32,10 @@ export class AuthService {
     }
     private async valid(dto: CreateUserDto){
         const user = await this.usersService.getUserName(dto.username)
-        const password = await bcrypt.compare(dto.password, user.password)
         if (!user) {
-            throw new UnauthorizedException({message: 'Некорректный емайл или пароль'})
+            throw new UnauthorizedException({message: 'ERR'})
         }
+        const password = await bcrypt.compare(dto.password, user.password)
         return user;
     }
 }
